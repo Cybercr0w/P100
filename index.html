@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="title" content="Gothic P100 Showcase" />
+  <meta name="description" content="All P100s, shrouded in shadow." />
+  <meta name="author" content="Gothified" />
+  <meta name="theme-color" content="#6a0dad" />
+  <meta name="robots" content="index, follow" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Gothic P100 Showcase" />
+  <meta property="og:description" content="All P100s, shrouded in shadow." />
+  <meta property="og:image" content="https://i.imgur.com/ICEj7Y8.png" />
+  <meta property="og:url" content="#" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Gothic P100 Showcase" />
+  <meta name="twitter:description" content="All P100s, shrouded in shadow." />
+  <meta name="twitter:image" content="https://i.imgur.com/ICEj7Y8.png" />
+
+  <title>Gothic P100 Showcase</title>
+  <link rel="icon" href="https://p100library.com/favicon.ico" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+<header>
+  <img src="assets/Banner.png" alt="Banner" class="banner"/>
+  <h1>P100 Showcase</h1>
+
+  <a href="https://steamcommunity.com/id/Pixel_Raccoon/" target="_blank" class="steam-button">
+    <img src="https://cdn-icons-png.flaticon.com/512/3670/3670382.png" alt="My Steam Page" class="steam-icon" />
+    My Steam Page
+  </a>
+
+  <div class="p100-counter">
+    Total P100s: <span id="p100-count">6</span>
+  </div>
+
+  <p>Shrouded memories of devotion.</p>
+</header>
+
+<div class="search-container">
+  <input type="text" id="search-input" placeholder="Search the dark archives..." />
+  <ul id="search-results"></ul>
+</div>
+
+<main class="gallery-section">
+  <div class="gallery">
+    <div class="screenshot">
+      <img src="assets/p100-screenshots/killers/mastermind.jpg" alt="P100 Mastermind" title="Unlocked on September 13 2024" />
+    </div>
+    <div class="screenshot">
+      <img src="assets/p100-screenshots/killers/Drakula.jpg" alt="P100 Dracula" title="Unlocked on July 10 2025" />
+    </div>
+    <div class="screenshot">
+      <img src="assets/p100-screenshots/survivors/Jeff.jpg" alt="P100 Jeff" title="Unlocked on July 11 2025" />
+    </div>
+    <div class="screenshot">
+      <img src="assets/p100-screenshots/survivors/alucard.jpg" alt="P100 Alucard" title="Unlocked on July 1 2025" />
+    </div>
+     <div class="screenshot">
+      <img src="assets/p100-screenshots/survivors/Husband.jpg" alt="P100 Vittorio Toscano" title="Unlocked on September 9 2024" />
+    </div>
+     <div class="screenshot">
+      <img src="assets/p100-screenshots/killers/phead.jpg" alt="P100 Pyramid Head" title="Unlocked on July 20 2025" />
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>Crafted in shadow • Last updated: 08/01/2025 [03:30 AM]</p>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-content">
+    <img src="" alt="Popup Image" id="lightbox-img" />
+    <div class="lightbox-info" id="lightbox-info">
+      <h3 id="lightbox-title">P100 Title</h3>
+      <p id="lightbox-desc">Additional info about this P100.</p>
+      <p id="lightbox-extra">Extra info about this P100.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxTitle = document.getElementById('lightbox-title');
+  const lightboxDesc = document.getElementById('lightbox-desc');
+  const lightboxExtra = document.getElementById('lightbox-extra');
+
+  const infoMap = {
+    'P100 Mastermind': {
+      title: 'The Mastermind',
+      desc: 'Unlocked on September 13 2024',
+    },
+    'P100 Dracula': {
+      title: 'The dark lord',
+      desc: 'Unlocked on July 10 2025',
+    },
+    'P100 Vittorio Toscano': {
+      title: 'Vittorio Toscano',
+      desc: 'Unlocked on September 9 2024',
+    },
+    'P100 Pyramid Head': {
+      title: 'Pyramid Head',
+      desc: 'Unlocked on July 20 2025',
+    },
+    'P100 Alucard': {
+      title: 'Alucard',
+      desc: 'Unlocked on July 1 2025',
+    },
+    'P100 Jeff': {
+      title: 'Jeff johnson',
+      desc: 'Unlocked on July 11 2025',
+    },
+  };
+
+  document.querySelectorAll('.screenshot img').forEach(img => {
+    img.addEventListener('click', () => {
+      const alt = img.alt;
+      const info = infoMap[alt] || { title: alt, desc: 'No extra info available.' };
+      lightboxImg.src = img.src;
+      lightboxTitle.textContent = info.title;
+      lightboxDesc.textContent = info.desc;
+      lightboxExtra.textContent = info.extra || '';
+      lightbox.classList.add('active');
+    });
+  });
+
+  lightbox.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+  });
+
+  const searchInput = document.getElementById('search-input');
+  const searchResults = document.getElementById('search-results');
+
+  const nameMap = {
+    "Jeff johansen": "P100 Jeff",
+    "The mastermind": "P100 Mastermind",
+    "Wesker": "P100 Mastermind",
+    "The dark lord": "P100 Dracula",
+    "Vittorio Toscano": "P100 Vittorio Toscano",
+    "Pyramid Head": "P100 Pyramid Head",
+    "Alucard": "P100 Alucard",
+  };
+
+  const imgMap = {};
+  document.querySelectorAll('.screenshot img').forEach(img => {
+    imgMap[img.alt.toLowerCase()] = img;
+  });
+
+  searchInput.addEventListener('input', () => {
+    const query = searchInput.value.toLowerCase();
+    searchResults.innerHTML = '';
+    if (!query) {
+      searchResults.style.display = 'none';
+      return;
+    }
+
+    const matches = Object.entries(nameMap).filter(([displayName, _alt]) =>
+      displayName.toLowerCase().includes(query)
+    );
+
+    if (matches.length > 0) {
+      matches.forEach(([displayName, altText]) => {
+        const li = document.createElement('li');
+        li.textContent = displayName;
+        li.addEventListener('click', () => {
+          const img = imgMap[altText.toLowerCase()];
+          if (img) img.click();
+          searchResults.style.display = 'none';
+          searchInput.value = '';
+        });
+        searchResults.appendChild(li);
+      });
+      searchResults.style.display = 'block';
+    } else {
+      searchResults.style.display = 'none';
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.search-container')) {
+      searchResults.style.display = 'none';
+    }
+  });
+</script>
+</body>
+</html>

@@ -12,13 +12,13 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="P100 Showcase" />
   <meta property="og:description" content="All P100s, shrouded in shadow." />
-  <meta property="og:image" content="https://i.imgur.com/3w6fxEX.png" />
+  <meta property="og:image" content="https://avatars.fastly.steamstatic.com/6c70b692b64e57586d9c6361cbf7a31ac5e97ed9_full.jpg" />
   <meta property="og:url" content="https://cybercr0w.github.io/P100/" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="P100 Showcase" />
   <meta name="twitter:description" content="All P100s, shrouded in shadow." />
-  <meta name="twitter:image" content="https://i.imgur.com/3w6fxEX.png" />
+  <meta name="twitter:image" content="https://avatars.fastly.steamstatic.com/6c70b692b64e57586d9c6361cbf7a31ac5e97ed9_full.jpg" />
 
   <title>Not_Pixel's P100 Showcase</title>
   <link rel="icon" href="https://p100library.com/favicon.ico" />
@@ -87,12 +87,18 @@
   </div>
 </div>
 
+<!-- 🔊 Lightbox trigger sound -->
+<audio id="lightbox-audio" src="audio/paper_unfold.mp3" preload="auto"></audio>
+
 <script>
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxTitle = document.getElementById('lightbox-title');
   const lightboxDesc = document.getElementById('lightbox-desc');
   const lightboxExtra = document.getElementById('lightbox-extra');
+
+  const openSound = document.getElementById('lightbox-audio');
+  openSound.volume = 0.2;
 
   const infoMap = {
     'P100 Mastermind': {
@@ -130,6 +136,12 @@
       lightboxDesc.textContent = info.desc;
       lightboxExtra.textContent = info.extra || '';
       lightbox.classList.add('active');
+
+      // 🔊 Play sound
+      if (openSound) {
+        openSound.currentTime = 0;
+        openSound.play().catch(() => {});
+      }
     });
   });
 
@@ -193,8 +205,8 @@
 </script>
 
 <script>
-  const minLeft = 2;  // Minimum left position in vw
-  const maxLeft = 97; // Maximum left position in vw to keep eyes fully visible
+  const minLeft = 2;
+  const maxLeft = 97;
 
   for (let i = 0; i < 8; i++) {
     const pair = document.createElement('div');

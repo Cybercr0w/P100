@@ -27,6 +27,7 @@
 </head>
 
 <body>
+
 <header>
   <img src="assets/Banner.png" alt="Banner" class="banner"/>
   <h1>P100 Showcase</h1>
@@ -189,6 +190,41 @@
       searchResults.style.display = 'none';
     }
   });
+</script>
+
+<script>
+  const minLeft = 2;  // Minimum left position in vw
+  const maxLeft = 97; // Maximum left position in vw to keep eyes fully visible
+
+  for (let i = 0; i < 8; i++) {
+    const pair = document.createElement('div');
+    pair.className = 'eye-pair';
+    pair.style.position = 'fixed';
+    pair.style.display = 'flex';
+    pair.style.top = `${Math.random() * 90}vh`;
+    pair.style.left = `${minLeft + Math.random() * (maxLeft - minLeft)}vw`;
+    pair.style.pointerEvents = 'none';
+    pair.style.opacity = Math.random() > 0.5 ? '0.12' : '0';
+    pair.style.transition = 'opacity 0.6s ease';
+    pair.style.zIndex = '0';
+
+    const leftEye = document.createElement('div');
+    leftEye.className = 'creepy-eye';
+    pair.appendChild(leftEye);
+
+    const rightEye = document.createElement('div');
+    rightEye.className = 'creepy-eye';
+    rightEye.style.marginLeft = '8px';
+    pair.appendChild(rightEye);
+
+    document.body.appendChild(pair);
+  }
+
+  setInterval(() => {
+    document.querySelectorAll('.eye-pair').forEach(pair => {
+      pair.style.opacity = Math.random() > 0.3 ? '0.13' : '0';
+    });
+  }, 1300);
 </script>
 </body>
 </html>
